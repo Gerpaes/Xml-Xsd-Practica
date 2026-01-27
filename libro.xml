@@ -11,16 +11,16 @@ o Género(obligatorio, múltiple y solo puede ser: “fantástico”, “histór
 
 
 <libro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="libro.xsd">
+    xsi:noNamespaceSchemaLocation="libro.xsd">
 
     <titulo ediciones="3">Harry Potter</titulo>
-
-    <escritor>Pedro Rodriguez</escritor>
-    <escritor>Andre Cabrera</escritor>
-
+    <escritores>
+        <escritor>Pedro Rodriguez</escritor>
+        <escritor>Andre Cabrera</escritor>
+    </escritores>
     <publicacion>1992-09-21</publicacion>
-
-    <genero>fantástico</genero>
-    <genero>humor</genero>
-
+    <generos>
+        <genero>fantástico</genero>
+        <genero>humor</genero>
+    </generos>
 </libro>
