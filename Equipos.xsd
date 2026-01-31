@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    
+    <xs:simpleType name="Texto320">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    
+    <xs:simpleType name="NumeroNoNegativo">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    
+    <xs:simpleType name="FechaNacimiento">
+        <xs:restriction base="xs:date">
+            <xs:maxExclusive value="2000-01-01"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    
+
+    <xs:element name="equipos">
+        <xs:complexType>
+            <xs:sequence>
+
+                
+                <xs:element name="equipo" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+
+                            <xs:element name="nombre" type="Texto320"/>
+                            <xs:element name="tipoTrabajo" type="Texto320"/>
+                            <xs:element name="director" type="Texto320"/>
+
+                           
+                            <xs:element name="resultados">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="anio" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="exitos" type="NumeroNoNegativo"/>
+                                                    <xs:element name="fracasos" type="NumeroNoNegativo"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="valor"
+                                                              type="xs:gYear"
+                                                              use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            
+                            <xs:element name="integrantes">
+                                <xs:complexType>
+                                    <xs:sequence>
+
+                                        <xs:element name="integrante"
+                                                    minOccurs="1"
+                                                    maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+
+                                                    <xs:element name="nombre" type="Texto320"/>
+                                                    <xs:element name="apellido" type="Texto320"/>
+                                                    <xs:element name="cargo" type="Texto320"/>
+
+                                                    <xs:element name="fechaNacimiento"
+                                                                type="FechaNacimiento"/>
+
+                                                    <xs:element name="rutaImagen"
+                                                                type="xs:string"/>
+
+                                                    <xs:element name="ultimaHoraParticipacion"
+                                                                type="xs:time"/>
+
+                                                    <xs:element name="ultimaFechaParticipacion"
+                                                                type="xs:date"/>
+
+                                                    
+                                                    <xs:element name="estadisticas">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="programasRealizados"
+                                                                            type="NumeroNoNegativo"/>
+                                                                <xs:element name="bugsResueltos"
+                                                                            type="NumeroNoNegativo"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+
+        
+        <xs:unique name="nombreEquipoUnico">
+            <xs:selector xpath="equipo"/>
+            <xs:field xpath="nombre"/>
+        </xs:unique>
+
+        <xs:unique name="tipoTrabajoUnico">
+            <xs:selector xpath="equipo"/>
+            <xs:field xpath="tipoTrabajo"/>
+        </xs:unique>
+
+        <xs:unique name="directorUnico">
+            <xs:selector xpath="equipo"/>
+            <xs:field xpath="director"/>
+        </xs:unique>
+
+    </xs:element>
+
+</xs:schema>

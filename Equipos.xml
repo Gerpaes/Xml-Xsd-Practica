@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Crea un documento XML que permita almacenar como mínimo la siguiente información:
+o Nombre del equipo [único y no se puede repetir]
+o Tipo de trabajo (desarrollo de software, equipo de futbol, equipo de LOL...) [único y no se
+puede repetir]
+o Director del equipo [único y no se puede repetir]
+o Numero de éxitos y fracasos agrupados por años.
+o De cada integrante guardar el nombre, apellido, cargo, fecha nacimiento, ruta de la imagen,
+última hora a la que ha empezado a participar, última fecha que ha empezado .
+Dept. de Informàtica 2025/26
+DAW M0373
+TIPUS: PRÀCTICA
+PROFESSOR: Cristian Catalan
+o De cada integrante guardar también mínimo un par de estadísticas según el tipo de trabajo
+(goles marcados, programas realizados, minions eliminados...)
+ 5p] Crea un documento XSD que defina la estructura del XML teniendo que:
+o El número de éxitos y fracasos ha de ser un número mayor o igual a 0.
+o La fecha de nacimiento y la última fecha que ha empezado a participar ha de ser del tipo
+fecha.
+o La fecha de nacimiento ha de ser inferior al 01/01/2000
+o La última hora que ha empezado a participar ha de ser del tipo hora.
+o Nombre, apellido y cargo deben tener entre 3 y 20 caracteres.
+o Define las reglas XSD de las estadísticas.
+o Cada equipo tiene un único conjunto de integrantes
+o Un conjunto de integrantes puede tener de uno a múltiples integrantes. -->
+
+<equipos
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="Equipos.xsd">
+
+    <equipo>
+        <nombre>Equipo Alpha</nombre>
+        <tipoTrabajo>desarrollador</tipoTrabajo>
+        <director>Juan Perez</director>
+
+        <resultados>
+            <anio valor="2022">
+                <exitos>10</exitos>
+                <fracasos>2</fracasos>
+            </anio>
+            <anio valor="2023">
+                <exitos>15</exitos>
+                <fracasos>3</fracasos>
+            </anio>
+        </resultados>
+
+        <integrantes>
+            <integrante>
+                <nombre>Ana</nombre>
+                <apellido>Gomez</apellido>
+                <cargo>Desarrolladora</cargo>
+                <fechaNacimiento>1995-06-15</fechaNacimiento>
+                <rutaImagen>/imagenes/ana.jpg</rutaImagen>
+                <ultimaHoraParticipacion>14:30:00</ultimaHoraParticipacion>
+                <ultimaFechaParticipacion>2023-10-01</ultimaFechaParticipacion>
+                <estadisticas>
+                    <programasRealizados>25</programasRealizados>
+                    <bugsResueltos>100</bugsResueltos>
+                </estadisticas>
+            </integrante>
+        </integrantes>
+    </equipo>
+</equipos>
